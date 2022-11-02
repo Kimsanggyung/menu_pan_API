@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'menu_pan_back.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'menu_pan_schema',
+        'USER': 'root',
+        'PASSWORD': 'mysql13579*',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
