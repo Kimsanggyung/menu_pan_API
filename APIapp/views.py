@@ -1,12 +1,12 @@
-from urllib import response
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-
 from .serializers import MenuSerializer
 from .models import Menu
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 
 class MenuList(APIView):
   def get(self, request):
@@ -46,3 +46,23 @@ class MenuDetail(APIView):
     menu = self.get_object(pk)
     menu.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+#---------------------------------------------------------------여기서부터 로그인 API
+class SignupAPI(APIView):
+  def post(self, request):
+    user = User.objects.create_user(username=request.data['id'], password=request.data['password'])
+    user.is_staff = True
+    user.save()
+    return Response(request.data, status=status.HTTP_201_CREATED)
+class LoginAPI(APIView):
+  def post(self, request):
+      user = authenticate(username=request.data['id'], password=request.data['password'])
+      if user is not None:
+          token = Token.objects.create(user=user)
+          return Response({"Token": token.key})
+      else:
+          return Response(status=400)
+class LogoutAPI(APIView):
+  def get(self, request, format=None):
+    request.user.auth_token.delete()
+    return Response(status=status.HTTP_200_OK)
