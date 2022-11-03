@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from .serializers import MenuSerializer
+from .serializers import MenuSerializer, UserSerializer
 from .models import Menu
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
@@ -11,7 +11,6 @@ from rest_framework.authtoken.models import Token
 class MenuList(APIView):
   def get(self, request):
     menu = Menu.objects.all()
-
     serializer = MenuSerializer(menu, many=True)
     return Response(serializer.data)
 
@@ -54,6 +53,10 @@ class SignupAPI(APIView):
     user.is_staff = True
     user.save()
     return Response(request.data, status=status.HTTP_201_CREATED)
+  def get(self, request):
+    username = User.objects.all()
+    serializer = UserSerializer(username, many=True)
+    return Response(serializer.data)
 class LoginAPI(APIView):
   def post(self, request):
       user = authenticate(username=request.data['id'], password=request.data['password'])
