@@ -66,6 +66,6 @@ class LoginAPI(APIView):
       else:
           return Response(status=400)
 class LogoutAPI(APIView):
-  def get(self, request, format=None):
+  def delete(self, request, format=None):
     request.user.auth_token.delete()
     return Response(status=status.HTTP_200_OK)
