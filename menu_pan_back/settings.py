@@ -60,7 +60,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:3000', 'http://localhost:3000')
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:3000', 'http://localhost:3000',
+    'https://bucolic-chaja-a00b6e.netlify.app',
+    'https://vermillion-valkyrie-db00cd.netlify.app'
+    )
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'menu_pan_back.urls'
