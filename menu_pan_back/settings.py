@@ -63,7 +63,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000', 'http://localhost:3000',
     'https://bucolic-chaja-a00b6e.netlify.app',
-    'https://vermillion-valkyrie-db00cd.netlify.app'
+    'https://vermillion-valkyrie-db00cd.netlify.app',
+    'https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app'
     )
 CORS_ALLOW_CREDENTIALS = True
 
