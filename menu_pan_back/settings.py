@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/']
+CSRF_TRUSTED_ORIGINS = ['https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app']
 
 
 # Application definition
